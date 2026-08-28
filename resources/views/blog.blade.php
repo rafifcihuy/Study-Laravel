@@ -17,7 +17,7 @@
                                 <p class="card-text">{{ Str::limit($blog->body, 75) }}</p>
                                 <a href="{{ url('/blog/' . $blog->slug) }}" class="btn btn-primary btn-sm">Baca
                                     Selengkapnya</a>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                 @empty
