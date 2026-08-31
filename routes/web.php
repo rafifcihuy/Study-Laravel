@@ -14,7 +14,7 @@ Route::get('/about', function () {
     return view('about', ['judul' => 'About']); 
 });
 Route::get('/blog', function () {
-    $blogs = Blog::all();
+    $blogs = Blog::paginate(21);
     return view('blog', compact('blogs'));
 });
 Route::get('/blog/{slug}', function ($slug) {
