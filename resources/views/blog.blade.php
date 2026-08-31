@@ -24,6 +24,8 @@
                     </div>
                 @empty
                     <p class="text-center">Belum ada blog yang ditulis.</p>
+                    <p class="text-center">Belum ada blog yang ditulis.</p>
+                    <p class="text-center">Belum ada blog yang ditulis.</p>
                 @endforelse
                 <div class="d-flex justify-content-center mt-4">
                    {{ $blogs->links('pagination::bootstrap-5') }}
