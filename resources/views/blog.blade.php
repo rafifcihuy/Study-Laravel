@@ -13,7 +13,8 @@
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title text-center ">{{ $blog->title }}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted mt-4">by {{ $blog->author }}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted mt-4">by {{ $users->where('id', $blog->author_id)->first()->name }}</h6>
+                                {{-- <h6 class="card-subtitle mb-2 text-muted mt-4">by {{ $blog->$user }}</h6> --}}
                                 <h6 class="card-subtitle mb-2 text-muted text-start">
                                     {{ $blog->created_at->format('d M Y') }}</h6>
                                 <p class="card-text">{{ Str::limit($blog->body, 75) }}</p>

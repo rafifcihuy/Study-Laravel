@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,7 +16,8 @@ Route::get('/about', function () {
 });
 Route::get('/blog', function () {
     $blogs = Blog::paginate(21);
-    return view('blog', compact('blogs'));
+    $users = User::all();
+    return view('blog', compact('blogs', 'users'));
 });
 Route::get('/blog/{slug}', function ($slug) {
     $blog = Blog::where('slug', $slug)->firstOrFail();
