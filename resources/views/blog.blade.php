@@ -3,7 +3,6 @@
 @section('title', 'Halaman Blog')
 
 @section('content')
-    {{-- @forelse ($blogs as $blog) --}}
     <section class="page-section portfolio mt-5" id="blog">
         <div class="container mt-5">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Blog</h2>
@@ -13,8 +12,8 @@
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title text-center ">{{ $blog->title }}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted mt-4">by {{ $users->where('id', $blog->author_id)->first()->name }}</h6>
-                                {{-- <h6 class="card-subtitle mb-2 text-muted mt-4">by {{ $blog->$user }}</h6> --}}
+                                <a href="/author/{{ $blog->author_id }}" class="card-subtitle mb-2 text-muted mt-4 hover:underline">by {{ $users->where('id', $blog->author_id)->first()->name }}</a>
+                                {{-- <h6 class="card-subtitle mb-2 text-muted mt-4">by {{ $blog->author_id->name }}</h6> --}}
                                 <h6 class="card-subtitle mb-2 text-muted text-start">
                                     {{ $blog->created_at->format('d M Y') }}</h6>
                                 <p class="card-text">{{ Str::limit($blog->body, 75) }}</p>
