@@ -24,8 +24,8 @@ class Blog extends Model
         'body',
     ];
 
-    // public function author()
-    // {
-    //     return $this->belongsTo(User::class, 'author_id');
-    // }
+   public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 }

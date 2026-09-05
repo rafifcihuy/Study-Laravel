@@ -12,7 +12,7 @@
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title text-center ">{{ $blog->title }}</h5>
-                                <a href="/author/{{ $blog->author_id }}" class="card-subtitle mb-2 text-muted mt-4 hover:underline">by {{ $users->where('id', $blog->author_id)->first()->name }}</a>
+                                <a href="/author/{{ $blog->author_id }}" class="card-subtitle mb-2 text-muted mt-4 hover:underline">by {{ $blog->author->name }}</a>
                                 {{-- <h6 class="card-subtitle mb-2 text-muted mt-4">by {{ $blog->author_id->name }}</h6> --}}
                                 <h6 class="card-subtitle mb-2 text-muted text-start">
                                     {{ $blog->created_at->format('d M Y') }}</h6>

@@ -20,13 +20,20 @@ Route::get('/blog', function () {
     return view('blog', compact('blogs', 'users'));
 });
 Route::get('/blog/{slug}', function ($slug) {
-    $blog = Blog::where('slug', $slug)->firstOrFail();
-    return view('blog-detail', compact('blog'));
+    $blogs = Blog::where('slug', $slug)->firstOrFail();
+    return view('blog-detail', compact('blogs'));
 });
 Route::get('/author/{id}', function ($id) {
-    $blogs = Blog::all();
-    return view('blog-author', compact('blogs'));
+    $author = User::findOrFail($id);
+    $blogs = $author->blogs;
+    return view('blog-author', compact('author', 'blogs'));
 });
+// Bonus: optimasi biar nggak N+1 query (kalau nanti banyak data)
+// php
+// Route::get('/author/{id}', function ($id) {
+//     $author = User::with('blogs')->findOrFail($id);
+//     return view('author-blogs', ['author' => $author, 'blogs' => $author->blogs]);
+// });
 Route::get('/contact', function () {
     return view('contact', ['judul' => 'contact']); 
 });
