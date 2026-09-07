@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Catagory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +20,8 @@ class Blog extends Model
      */
     protected $fillable = [
         'title',
-        'author',
+        'author_id',
+        'category_id',
         'slug',
         'body',
     ];
@@ -27,5 +29,10 @@ class Blog extends Model
    public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Catagory::class, 'category_id');
     }
 }
