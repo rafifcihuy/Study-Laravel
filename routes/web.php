@@ -23,8 +23,8 @@ Route::get('/blog/{slug}', function ($slug) {
     $blogs = Blog::where('slug', $slug)->firstOrFail();
     return view('blog-detail', compact('blogs'));
 });
-Route::get('/author/{id}', function ($id) {
-    $author = User::findOrFail($id);
+Route::get('/author/{user}', function ($user) {
+    $author = User::where('username', $user)->firstOrFail();
     $blogs = $author->blogs;
     return view('blog-author', compact('author', 'blogs'));
 });
