@@ -8,11 +8,18 @@ Route::get('/', function () {
     return view('index'); 
 });
 Route::get('/home', function () {
-    return view('home', ['judul' => 'Home']); 
+    $judul = 'Home';
+    $users = User::first();
+    $kontol = User::find(2);
+    return view('home', compact('judul', 'users', 'kontol'));
 });
-
 Route::get('/about', function () {
-    return view('about', ['judul' => 'About']); 
+    $judul = 'About';
+    // $deskripsi = Blog::where('body', $body)->firstOrFail();
+    // $deskripsi = Blog::where('body', '$body')->firstOrFail();
+    $deskripsi = Blog::all()->first();
+    $nama = User::all()->first();
+    return view('about', compact('judul', 'deskripsi', 'nama'));
 });
 Route::get('/blog', function () {
     $blogs = Blog::paginate(21);
@@ -35,6 +42,7 @@ Route::get('/author/{user}', function ($user) {
 //     return view('author-blogs', ['author' => $author, 'blogs' => $author->blogs]);
 // });
 Route::get('/contact', function () {
-    return view('contact', ['judul' => 'contact']); 
+    $judul = 'Contact';
+    return view('contact', compact('judul'));
 });
 
