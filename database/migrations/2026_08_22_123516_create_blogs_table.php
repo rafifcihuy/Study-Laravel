@@ -19,11 +19,10 @@ return new class extends Migration
                 table: 'users',
                 indexName: 'blog_author_id'
             );
-            // erorr: SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint (SQL: alter table `blogs` add constraint `blog_author_id` foreign key (`author_id`) references `users` (`id`))
             $table->foreignId('category_id')->constrained(
                 table: 'categories',
                 indexName: 'blog_category_id'
-            );
+            ); 
             $table->string('slug')->unique();
             $table->text('body');
             $table->timestamps();

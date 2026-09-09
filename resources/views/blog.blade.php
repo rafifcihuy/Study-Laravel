@@ -12,8 +12,7 @@
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title text-center ">{{ $blog->title }}</h5>
-                                <a href="/author/{{ $blog->author->username }}" class="card-subtitle mb-2 text-muted mt-4 hover:underline">by {{ $blog->author->name }}</a>
-                                {{-- <h6 class="card-subtitle mb-2 text-muted mt-4">by {{ $blog->author_id->name }}</h6> --}}
+                                <a href="/author/{{ $blog->author->username }}" class="card-subtitle mb-2 text-muted mt-4 hover:underline card-title">by {{ $blog->author->name }}</a>
                                 <h6 class="card-subtitle mb-2 text-muted text-start">
                                     {{ $blog->created_at->format('d M Y') }}</h6>
                                 <p class="card-text">{{ Str::limit($blog->body, 75) }}</p>
