@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -33,9 +34,16 @@ Route::get('/blog/{slug}', function ($slug) {
     return view('blog-detail', compact('blogs'));
 });
 Route::get('/author/{user}', function ($user) {
-    $author = User::where('username', $user)->firstOrFail();
+    $author = User::where('username', $user)->firstOrFail();    
     $blogs = $author->blogs;
+    // $nomer = Blog::all();
     return view('blog-author', compact('author', 'blogs'));
+});
+Route::get('/category/{name}', function ($name) {
+    $category = Category::where('name', $name)->firstOrFail();
+    $blogs = $category->blogs;
+    // $category = Category::all();
+    return view('blog-category', compact('category', 'blogs'));
 });
 // Bonus: optimasi biar nggak N+1 query (kalau nanti banyak data)
 // php
@@ -44,7 +52,9 @@ Route::get('/author/{user}', function ($user) {
 //     return view('author-blogs', ['author' => $author, 'blogs' => $author->blogs]);
 // });
 Route::get('/contact', function () {
-    $judul = 'Contact';
-    return view('contact', compact('judul'));
+    $contact = 'Contact';
+    $email = User::all();
+    // $peler = $email->peler;
+    return view('contact', compact('contact', 'email'));
 });
 
