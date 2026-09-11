@@ -18,7 +18,7 @@ Route::get('/about', function () {
     // $deskripsi = Blog::where('body', $body)->firstOrFail();
     // $deskripsi = Blog::where('body', '$body')->firstOrFail()
     // $deskripsi = Blog::where('body', 'like', '%$body%')->firstOrFail(); tes
-    // $deskripsi = Blog::where('body', 'like', '%$body%')->firstOrFail(); tes
+    // $deskripsi = Blog::where('body', 'like', '%$body%')->firstOrFail(); 
     $deskripsi = Blog::all()->first();
     $nama = User::all()->first();
     return view('about', compact('judul', 'deskripsi', 'nama'));
