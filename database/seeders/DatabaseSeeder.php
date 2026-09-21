@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
         ]);
+        // Yang bawah masih belum paham 
         Blog::factory(100)->create([
             'author_id' => fn () => User::query()->inRandomOrder()->value('id'),
             'category_id' => fn () => Category::query()->inRandomOrder()->value('id'),
