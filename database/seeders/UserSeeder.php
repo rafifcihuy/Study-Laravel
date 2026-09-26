@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        // user tambahan oke
+        // user tambahan
         User::factory()->count(10)->create();
     }
 }
