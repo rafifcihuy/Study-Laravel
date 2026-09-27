@@ -27,7 +27,7 @@ Route::get('/about', function () {
 Route::get('/blog', function () {
     // $blogs = Blog::paginate(21);
     $blogs = Blog::with(['author', 'category'])->paginate(21);
-    $users = User::get();
+    $users = User::get(); // <- INI Eager Loading
     return view('blog', compact('blogs', 'users'));
 });
 Route::get('/blog/{slug}', function ($slug) {
