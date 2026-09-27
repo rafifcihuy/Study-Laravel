@@ -20,23 +20,25 @@ Route::get('/about', function () {
     // $deskripsi = Blog::where('body', '$body')->firstOrFail()
     // $deskripsi = Blog::where('body', 'like', '%$body%')->firstOrFail(); 
     // $deskripsi = Blog::where('body', 'like', '%$body%')->firstOrFail(); 
-    $deskripsi = Blog::all()->first();
-    $nama = User::all()->first();
+    $deskripsi = Blog::first();
+    $nama = User::first();
     return view('about', compact('judul', 'deskripsi', 'nama'));
 });
 Route::get('/blog', function () {
-    $blogs = Blog::paginate(21);
-    $users = User::all();
+    // $blogs = Blog::paginate(21);
+    $blogs = Blog::with(['author', 'category'])->paginate(21);
+    $users = User::get();
     return view('blog', compact('blogs', 'users'));
 });
 Route::get('/blog/{slug}', function ($slug) {
     $blogs = Blog::where('slug', $slug)->firstOrFail();
+    // $blogs = Blog::with('author')->get(); 
     return view('blog-detail', compact('blogs'));
 });
 Route::get('/author/{user}', function ($user) {
-    $author = User::where('username', $user)->firstOrFail();    
+    $author = User::where('username', $user)->firstOrFail();
+    $author->load('blogs');           // <- INI Lazy Eager Loading
     $blogs = $author->blogs;
-    // $nomer = Blog::all();
     return view('blog-author', compact('author', 'blogs'));
 });
 Route::get('/category/{name}', function ($name) {
@@ -53,7 +55,7 @@ Route::get('/category/{name}', function ($name) {
 // });
 Route::get('/contact', function () {
     $contact = 'Contact';
-    $email = User::all();
+    $email = User::get();
     // $peler = $email->peler;
     return view('contact', compact('contact', 'email'));
 });
