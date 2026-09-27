@@ -7,7 +7,7 @@
         <h2>Semua Artikel oleh {{ $author->name }}</h2>
         <hr>
          {{-- <a href="{{ url('/blog') }}" class="btn btn-secondary mt-4">Kembali ke Blog</a>  --}}
-                <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm mb-3">
+                <a href="{{ url('/blog') }}" class="btn btn-secondary btn-sm mb-3">
             &larr; Kembali
         </a>
         <div class="row mt-4">

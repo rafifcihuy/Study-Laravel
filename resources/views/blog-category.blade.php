@@ -6,7 +6,7 @@
 
         <h2>Semua Category oleh {{ $category->name }}</h2>
         <hr>
-                <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm mb-3">
+                <a href="{{ url('/blog') }}" class="btn btn-secondary btn-sm mb-3">
             &larr; Kembali
         </a>
         <div class="row mt-4">
@@ -23,7 +23,7 @@
                                 {{ $blog->created_at->format('d M Y') }}
                             </h6>
                             <p class="card-text">{{ Str::limit($blog->body, 100) }}</p>
-                            <a href="{{ url('/blog/') }}" class="btn btn-primary btn-sm">Baca Selengkapnya</a>
+                            <a href="{{ url('/blog/' . $blog->slug) }}" class="btn btn-primary btn-sm">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>

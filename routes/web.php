@@ -43,7 +43,7 @@ Route::get('/author/{user}', function ($user) {
 });
 Route::get('/category/{name}', function ($name) {
     $category = Category::where('name', $name)->firstOrFail();
-    $category->load('blogs.author');   // Lazy Eager Loading, sekalian ambil author tiap blog
+    $category->load('blogs.author');   // Lazy Eager Loading, sekalian ambil author tiap blog  (Kenapa ini kok pake blog.author buka blog.category? karena kita mau ambil author tiap blog, bukan category tiap blog || terus bedanya sama yg atas itu kan pake blog.author, nah ini pake blog.category, jadi beda, karena kita mau ambil author tiap blog bukan category tiap blog)
     $blogs = $category->blogs;
     // $category = Category::all();
     return view('blog-category', compact('category', 'blogs'));
