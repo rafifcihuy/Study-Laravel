@@ -37,12 +37,13 @@ Route::get('/blog/{slug}', function ($slug) {
 });
 Route::get('/author/{user}', function ($user) {
     $author = User::where('username', $user)->firstOrFail();
-    $author->load('blogs');           // <- INI Lazy Eager Loading
+    $author->load('blogs.author');   // Lazy Eager Loading, sekalian ambil category tiap blog
     $blogs = $author->blogs;
     return view('blog-author', compact('author', 'blogs'));
 });
 Route::get('/category/{name}', function ($name) {
     $category = Category::where('name', $name)->firstOrFail();
+    $category->load('blogs.author');   // Lazy Eager Loading, sekalian ambil author tiap blog
     $blogs = $category->blogs;
     // $category = Category::all();
     return view('blog-category', compact('category', 'blogs'));
