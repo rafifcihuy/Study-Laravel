@@ -25,6 +25,8 @@ class Blog extends Model
         'slug',
         'body',
     ];
+    
+    protected $with = ['author', 'category']; // Eager loading untuk relasi author dan category
 
    public function author()
     {
