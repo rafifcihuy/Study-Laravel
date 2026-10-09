@@ -1,9 +1,14 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+
+route::get('/login',  [LoginController::class, 'index'])->name('login')->middleware('guest');
+route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
+route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/', function () {
     return view('index'); 
