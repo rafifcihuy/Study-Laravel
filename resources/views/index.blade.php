@@ -6,6 +6,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Freelancer - Start Bootstrap Theme</title>
+
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -18,7 +19,7 @@
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        {{-- <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="/">Start Bootstrap</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,14 +35,17 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
         <!-- Masthead-->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+                <h1 class="masthead-heading text-uppercase mb-3">Start Bootstrap</h1>
+                {{-- <div class="text-white"> --}}
+                    <a class="masthead-heading text-uppercase mb-0 text-white" href="{{ route('login') }}">Login</a>
+                {{-- </div> --}}
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
