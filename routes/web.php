@@ -39,7 +39,7 @@ Route::get('/blog/{slug}', function ($slug) {
     $blogs = Blog::where('slug', $slug)->firstOrFail(); 
     // $blogs = Blog::with('author')->get(); 
     return view('blog-detail', compact('blogs'));
-})->middleware('auth');
+})->middleware('auth');  
 Route::get('/author/{user}', function ($user) {
     $author = User::where('username', $user)->firstOrFail();
     $author->load('blogs.author');   // Lazy Eager Loading, sekalian ambil category tiap blog
