@@ -19,9 +19,9 @@ Route::get('/home', function () {
     return view('home', compact('judul', 'user'));
 })->middleware('auth');
 Route::get('/about', function () {
-    $users = Auth::user();
-    $blogs = Blog::get();
-    return view('about', compact('users', 'blogs'));
+    $user = Auth::user();
+    $blogs = $user->blogs;
+    return view('about', compact('user', 'blogs'));
 })->middleware('auth');
 Route::get('/blog', function () {
     $blogs = Blog::with(['author', 'category'])->paginate(21);

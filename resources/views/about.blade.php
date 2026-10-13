@@ -5,7 +5,7 @@
 @section('content')
 <section class="page-section portfolio mt-5" id="blog">
         <div class="container mt-5">
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">About Punya {{ $users->name }}</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Blog Punya {{ $user->name }}</h2>
           <div class="row mt-4">
             @forelse ($blogs as $blog)
                 <div class="col-md-4 mb-4">
