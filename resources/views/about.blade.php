@@ -3,15 +3,24 @@
 @section('title', 'Halaman About')
 
 @section('content')
-        {{-- @forelse ($deskripsi as $oke) --}}
-        <section class="page-section portfolio mt-5" id="about">
-            <div class="container mt-5">
-                {{-- <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ $judul }}</h2> --}}
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nama pertama :{{ $nama->name }}</h2>
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Deskripsi : {{ $deskripsi->body }}</h2>
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Penulis :   {{ $deskripsi->author->name }}</h2>
-                {{-- <p class="lead">{{ $oke->body }}</p> --}}
-            </div>
-        </section>
-        {{-- @endforelse --}}
+<section class="page-section portfolio mt-5" id="blog">
+        <div class="container mt-5">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">About Punya {{ $users->name }}</h2>
+          <div class="row mt-4">
+            @forelse ($blogs as $blog)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $blog->title }}</h5>
+                            <p class="card-text">{{ Str::limit($blog->body, 1000000) }}</p>
+                            {{-- <a href="{{ url('/blog/' . $blog->slug) }}" class="btn btn-primary btn-sm">Baca Selengkapnya</a> --}}
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <p>Penulis ini belum menulis artikel.</p>
+            @endforelse
+        </div>
+        </div>
+    </section>
 @endsection

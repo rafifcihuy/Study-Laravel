@@ -4,33 +4,26 @@ use App\Http\Controllers\LoginController;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login',  [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
-
 Route::get('/', function () {
     return view('index'); 
 });
 Route::get('/home', function () {
     $judul = 'Home';
-    $users = User::first();
-    $kontol = User::find(2);
-    return view('home', compact('judul', 'users', 'kontol'));
+    $user = Auth::user();
+    return view('home', compact('judul', 'user'));
 })->middleware('auth');
 Route::get('/about', function () {
-    $judul = 'About';
-    // $deskripsi = Blog::where('body', $body)->firstOrFail();
-    // $deskripsi = Blog::where('body', '$body')->firstOrFail()
-    // $deskripsi = Blog::where('body', 'like', '%$body%')->firstOrFail(); 
-    // $deskripsi = Blog::where('body', 'like', '%$body%')->firstOrFail(); 
-    $deskripsi = Blog::first();
-    $nama = User::first();
-    return view('about', compact('judul', 'deskripsi', 'nama'));
+    $users = Auth::user();
+    $blogs = Blog::get();
+    return view('about', compact('users', 'blogs'));
 })->middleware('auth');
 Route::get('/blog', function () {
-    // $blogs = Blog::paginate(21);
     $blogs = Blog::with(['author', 'category'])->paginate(21);
     $users = User::get(); // <- INI Eager Loading
     return view('blog', compact('blogs', 'users'));
@@ -53,12 +46,6 @@ Route::get('/category/{name}', function ($name) {
     // $category = Category::all();
     return view('blog-category', compact('category', 'blogs'));
 })->middleware('auth');
-// Bonus: optimasi biar nggak N+1 query (kalau nanti banyak data)
-// php
-// Route::get('/author/{id}', function ($id) {
-//     $author = User::with('blogs')->findOrFail($id);
-//     return view('author-blogs', ['author' => $author, 'blogs' => $author->blogs]);
-// });
 Route::get('/contact', function () {
     $contact = 'Contact';   
     $email = User::get();

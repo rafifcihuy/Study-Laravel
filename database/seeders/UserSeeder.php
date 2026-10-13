@@ -25,5 +25,18 @@ class UserSeeder extends Seeder
         ]);
         // user tambahan
         User::factory()->count(10)->create();
+        
+        User::create([
+            'name' => 'Nama Admin',
+            'username' => 'usernameadmin',
+            'email_verified_at' => now(),
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin123'),
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        // user tambahan
+        User::factory()->count(1)->create();
     }
 }
