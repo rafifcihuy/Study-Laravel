@@ -38,5 +38,31 @@ class UserSeeder extends Seeder
         ]);
         // user tambahan
         User::factory()->count(1)->create();
+
+        User::create([
+            'name' => 'Nama amba',
+            'username' => 'usernameamba',
+            'email_verified_at' => now(),
+            'email' => 'amba@gmail.com',
+            'password' => bcrypt('123'),
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        // user tambahan
+        User::factory()->count(1)->create();
+
+        User::create([
+            'name' => 'Rafif',
+            'username' => 'usernamerafif',
+            'email_verified_at' => now(),
+            'email' => 'rafif.aja2004@gmail.com',
+            'password' => bcrypt('123'),
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        // user tambahan
+        User::factory()->count(1)->create();
     }
 }

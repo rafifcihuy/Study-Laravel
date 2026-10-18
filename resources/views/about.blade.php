@@ -12,8 +12,8 @@
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title">{{ $blog->title }}</h5>
+                                <a class="card-subtitle mb-2 text-muted mt-4 hover:underline card-title">by {{ $blog->author->name }}</a>
                             <p class="card-text">{{ Str::limit($blog->body, 1000000) }}</p>
-                            {{-- <a href="{{ url('/blog/' . $blog->slug) }}" class="btn btn-primary btn-sm">Baca Selengkapnya</a> --}}
                         </div>
                     </div>
                 </div>

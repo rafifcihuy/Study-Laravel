@@ -20,7 +20,7 @@ Route::get('/home', function () {
 })->middleware('auth');
 Route::get('/about', function () {
     $user = Auth::user();
-    $blogs = $user->blogs;
+    $blogs = $user->blogs; // Belajar lagi bansggt
     return view('about', compact('user', 'blogs'));
 })->middleware('auth');
 Route::get('/blog', function () {
@@ -49,8 +49,7 @@ Route::get('/category/{name}', function ($name) {
 Route::get('/contact', function () {
     $contact = 'Contact';   
     $email = User::get();
-    // $peler = $email->peler;
-    return view('contact', compact('contact', 'email'));
-    
+    $user = Auth::user();
+    return view('contact', compact('contact', 'email', 'user'));
 })->middleware('auth');
 
