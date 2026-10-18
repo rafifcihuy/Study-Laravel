@@ -3,9 +3,17 @@
 @section('title', 'Halaman Blog')
 
 @section('content')
+
     <section class="page-section portfolio mt-5" id="blog">
         <div class="container mt-5">
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Blog</h2>
+            <section class="card" style="max-width: 320px">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <a href="#" class="btn-solid theme-primary">Go somewhere</a>
+  </div>
+</section>
             <div class="row mt-5">
                 @forelse ($blogs as $blog)
                     <div class="col-md-4 mb-4">

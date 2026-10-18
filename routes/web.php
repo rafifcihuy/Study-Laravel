@@ -46,10 +46,8 @@ Route::get('/category/{name}', function ($name) {
     // $category = Category::all();
     return view('blog-category', compact('category', 'blogs'));
 })->middleware('auth');
-Route::get('/contact', function () {
-    $contact = 'Contact';   
-    $email = User::get();
+Route::get('/contact', function () { 
     $user = Auth::user();
-    return view('contact', compact('contact', 'email', 'user'));
+    return view('contact', compact('user'));
 })->middleware('auth');
 
