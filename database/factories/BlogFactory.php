@@ -19,10 +19,10 @@ class BlogFactory extends Factory
     public function definition(): array
     {
         return [
-            "title" => fake()->sentence(),
+            "title" => $title = fake()->sentence(mt_rand(2, 5)),
             "author_id" => User::factory(),
             "category_id" => Category::factory(),
-            "slug" => str()->slug(fake()->sentence()),
+            "slug"  => str()->slug($title),
             "body" => fake()->text(),
         ];
     }
