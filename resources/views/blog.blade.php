@@ -11,16 +11,19 @@
                 @forelse ($blogs as $blog)
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title text-center ">{{ $blog->title }}</h5>
-                                <a href="/author/{{ $blog->author->username }}" class="card-subtitle mb-2 text-muted mt-4 hover:underline card-title">by {{ $blog->author->name }}</a>
-                                <h5 class="card-subtitle mb-2 text-muted mt-4 hover:underline card-title">Category:</h5>
-                                <a href="/category/{{ $blog->category->name }}" class="card-subtitle mb-2 text-muted mt-4 hover:underline card-title">{{ $blog->category->name }}</a>
-                                <h6 class="card-subtitle mb-2 text-muted text-start">
-                                    {{ $blog->created_at->format('d M Y') }}</h6>
-                                <p class="card-text">{{ Str::limit($blog->body, 75) }}</p>
-                                <a href="{{ url('/blog/' . $blog->slug) }}" class="btn btn-primary btn-sm">Baca
-                                    Selengkapnya</a>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-center mb-2">{{ $blog->title }}</h5>
+                                <a class="card-subtitle text-muted mb-3">by {{ $blog->author->name }}</a>
+
+                                <h6 class="text-secondary mb-1">Category:</h6>
+                                <a class="text-muted">{{ $blog->category->name }}</a>
+                                <div class="fw-bold mb-2">{{ $blog->created_at->format('d M Y') }}</div>
+
+                                <p class="card-text">{{ Str::limit($blog->body, 100) }}</p>
+
+                                <div class="mt-auto">
+                                    <a href="/blog/{{ $blog->slug }}" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -28,7 +31,7 @@
                     <p class="text-center">Belum ada blog yang ditulis.</p>
                 @endforelse
                 <div class="d-flex justify-content-center mt-4">
-                   {{ $blogs->links('pagination::bootstrap-5') }}
+                    {{ $blogs->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>
