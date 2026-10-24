@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LoginController;
 use App\Models\Blog;
 use App\Models\Category;
@@ -13,6 +15,14 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/', function () {
     return view('index'); 
 });
+
+Route::middleware('auth')->group(function () {
+// Route::delete('/blog/{blog}', [BlogController::class, 'destroy']);
+Route::delete('/about/{about}', [AboutController::class, 'destroy']);
+
+});
+
+
 Route::get('/home', function () {
     $judul = 'Home';
     $user = Auth::user();
